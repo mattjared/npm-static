@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-css": "node-sass --include-path scss src/scss/main.scss dist/css/main.css",
     "watch-css": "nodemon -e scss -x \"npm run build-css\"",
-    "build-html": "jade src/jade/index.jade -o public/"
+    "build-html": "jade src/jade/index.jade -o public/",
+    "watch-html": "jade src/jade/index.jade -w -o public/"
   },
   "repository": {
     "type": "git",

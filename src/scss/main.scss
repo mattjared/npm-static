@@ -1,8 +1,11 @@
 $tester: #19849c;
-$thing: #1984dd;
 
 body {
   margin: 0;
   background-color: $tester;
-  color: $thing;
+  color: white;
+}
+
+h1, p {
+  text-shadow: 1px 1px 1px rgba(0,0,0,.9);
 }

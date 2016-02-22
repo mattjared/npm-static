@@ -1,8 +1,8 @@
-doctype html
-html(lang="en")
-  head
-    title= pageTitle
-    link(href='css/main.css', rel='stylesheet')
-  body
-    h1 This is a page!
-    p Jade is a terse and simple templating language with a strong focus on performance and powerful TEST AGAIN test tester again
+extends ./_layout.jade
+
+block title
+    title Article Title
+
+block content
+    include ./_nav.jade
+    h1 This is the content

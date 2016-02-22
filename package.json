@@ -4,11 +4,15 @@
   "description": "static site generator using npm scripts",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build-css": "node-sass --include-path scss src/scss/main.scss dist/css/main.css",
+    "build-css": "node-sass --include-path scss src/scss/main.scss dist/style.css --output-style compressed",
     "watch-css": "nodemon -e scss -x \"npm run build-css\"",
-    "build-html": "jade src/jade/index.jade -o public/",
-    "watch-html": "jade src/jade/index.jade -w -o public/"
+    "build-html": "jade src/jade/index.jade -o dist/",
+    "watch-html": "jade src/jade/index.jade -w -o dist/",
+    "build-js": "uglifyjs src/js/*.js > dist/script.js",
+    "watch-js": "nodemon -e js --watch src/js/*.js -x \"npm run build-js\"",
+    "build": "npm run build-css && npm run build-html && npm run build-js",
+    "serve": "http-server -p 5454 dist/",
+    "watch": "parallelshell 'npm run serve -s' 'npm run watch-css' 'npm run watch-html' 'npm run watch-js'"
   },
   "repository": {
     "type": "git",
@@ -21,8 +25,11 @@
   },
   "homepage": "https://github.com/mattjared/npm-static",
   "devDependencies": {
+    "http-server": "^0.9.0",
     "jade": "^1.11.0",
     "node-sass": "^3.4.2",
-    "nodemon": "^1.9.0"
+    "nodemon": "^1.9.0",
+    "parallelshell": "^2.0.0",
+    "uglify-js": "^2.6.1"
   }
 }
